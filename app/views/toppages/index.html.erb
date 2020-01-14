@@ -1,12 +1,13 @@
 <% if logged_in? %>
   <div class="col-sm-12">
-      <%= render 'category_navbar', posts: @posts %>
+      <%= render 'toppages/category_navbar'%>
     </div>
   
   <div class="post">
     <div class="row" >
       <aside class="col-sm-4 post-form">
         <%= form_with(model: @post, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
                   <div class="form-group">
                     <%= f.text_area :content, class: 'form-control', rows: 5 %>
                   </div>

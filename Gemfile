@@ -56,7 +56,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "kaminari"
 
-gem "carrierwave"
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'cloudinary'
+
 gem 'rmagick'
 gem 'bcrypt', '~> 3.1.7'
 group :production do

@@ -4,8 +4,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
+  # cloud9とHerokuで場合分け
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    storage :file
+  end
   # 画像の上限を640x480にする
   process :resize_to_limit => [640, 480]
   # storage :fog
