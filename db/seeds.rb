@@ -1,7 +1,6 @@
-Category.create(name:"fashion")
-Category.create(name:"degital")
-Category.create(name:"cosmetic")
-Category.create(name:"kitchen")
-Category.create(name:"life")
-Category.create(name:"other")
-
+Category.create(name:"ファッション")
+Category.create(name:"デジタル")
+Category.create(name:"コスメ")
+Category.create(name:"キッチン")
+Category.create(name:"暮らし")
+Category.create(name:"その他")

@@ -2,8 +2,10 @@
   <ul class="list-unstyled">
     <% users.each do |user| %>
       <li class="media">
-    <!--<img class="mr-2 rounded" src="%=<!--< gravatar_url(user, { size: 50 }) %>" alt=""> -->
-        <img class="mr-2 rounded" src="<%= "/user_images/#{@user.image}" %>" alt="">
+        <div class="media-body">
+              <%= image_tag user.image.url if user.image? %>
+              <%= image_tag asset_path("default.png") unless user.image? %>
+        </div>
         <div class="media-body">
           <div>
             <%= user.name %>

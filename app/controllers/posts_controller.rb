@@ -8,7 +8,7 @@ class PostsController < ApplicationController
       flash[:success] = 'メッセージを投稿しました。'
       redirect_to root_url
     else
-      @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
+      @posts = Post.all.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render 'toppages/index'
     end
@@ -20,14 +20,15 @@ class PostsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+
   private
 
   def post_params
-    params.require(:micropost).permit(:content,:image)
+    params.require(:post).permit(:content,:image,:category_id)
   end
   
   def correct_user
-    @post = current_user.microposts.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     unless @post
       redirect_to root_url
     end

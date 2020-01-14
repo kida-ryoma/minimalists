@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :fav_posts, through: :favorites,source: :post  
   
+  mount_uploader :image, ImageUploader
   
   def follow(other_user)
     unless self == other_user
@@ -31,10 +32,6 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
-  def feed_posts
-    Post.where(user_id: self.following_ids + [self.id])
-  end
-  
   def favorite(post)
     favorites.find_or_create_by(post_id: post.id)
   end
@@ -47,4 +44,9 @@ class User < ApplicationRecord
   def alr_favorite?(post)
     self.fav_posts.include?(post)
   end
+  
+  #全てのユーザの投稿を取得したいのでコメントアウト
+  #def feed_posts
+  #  Post.where(user_id: self.following_ids + [self.id])
+  #end
 end

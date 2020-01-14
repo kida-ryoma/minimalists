@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     @count_posts = user.posts.count
     @count_followings = user.followings.count
     @count_followers = user.followers.count
-    @fav_posts = user.fav_posts.count
+    @count_fav_posts = user.fav_posts.count
   end
 end
