@@ -4,10 +4,10 @@
       <div class="card-header">
         <h3 class="card-title"><%= @user.name %></h3>
       </div>
-      <div class="card-body">
-             <%= image_tag @user.image.url if @user.image? %>
-             <%= image_tag asset_path("default.png") unless @user.image? %>
-      </div>
+      <div class="card-body user-image">
+                <%= image_tag @user.image.url,:size =>'170x170' if @user.image? %>
+                <%= image_tag asset_path("default.png"),:size =>'170x170' unless @user.image? %>
+          </div>
     </div>
     <%= render 'relationships/follow_button', user: @user %>
   </aside>

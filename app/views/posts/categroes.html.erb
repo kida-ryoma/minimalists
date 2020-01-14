@@ -1,1 +1,29 @@
-
+<% if logged_in? %>
+  <div class="col-sm-12">
+      <%= render 'category_navbar', posts: @posts %>
+    </div>
+  
+  <div class="post">
+    <div class="row" >
+      <aside class="col-sm-4 post-form">
+        <%= form_with(model: @post, local: true) do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :content, class: 'form-control', rows: 5 %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :image, '画像(一枚のみ)' %>
+                    <%= f.file_field :image, class: 'form-control' %>
+                  </div>
+                  <!-- カテゴリ選択 -->
+                  <div class="form-group">
+                    <%= f.label :category_id, "カテゴリー" %>
+                    <%= f.collection_select :category_id, Category.all, :id, :name %>
+                  </div>
+          <%= f.submit 'Post', class: 'btn btn-block' %>
+        <% end %>
+      </aside>
+      <div class="col-sm-8">
+        <%= render 'posts/posts', posts: @posts %>
+      </div>
+    </div>
+  </div>

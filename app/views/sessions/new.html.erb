@@ -17,9 +17,9 @@
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
-      <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'ログイン', class: 'btn btn-block login-btn' %>
     <% end %>
 
-    <p>New user? <%= link_to '会員登録', signup_path %></p>
+    <p id="fornewuser">New user? <%= link_to '会員登録', signup_path %></p>
   </div>
 </div>

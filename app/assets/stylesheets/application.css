@@ -1,15 +1,133 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/*toppage*/
+    .post{
+        margin-top: 30px;
+    }
+    
+    .post aside div{
+        margin-top: 10px;
+    }
+    
+    .post-form .btn{
+        background-color: #808080;
+        color:#FFF;
+    }
+
+/*navbar*/
+    .navbar-nav .nav-item{
+        padding:0px 15px;
+    }
+    
+    .navbar-nav .dropdown-item a{
+        color:#808080;
+        text-decoration:none;
+    }
+    .navbar-nav .dropdown-item a:hover{
+        color:#C0C0C0;
+        text-decoration:none;
+    }
+    header {
+        background-color:#808080;
+        color:#FFF;
+       text-decoration:none;
+    }
+    header a{
+        color:#FFF;
+    }
+    header a:hover{
+        color:#C0C0C0;
+    }
+
+/*category_navbar*/
+
+/*posts*/
+    .post-user-image{
+        padding-right:15px ;
+        margin-top:10px;
+    }
+    
+    .post-user-name a{
+         color:#000;
+         text-decoration:none;
+         font-size:30px;
+    }
+    
+    .post-user-name .text-muted{
+        margin-left:10px;
+    }
+    
+    .img-circle{
+        border-radius:30px;
+    }
+    
+    .post-category{
+        margin:5px 0px 0px 5px;
+        padding:5px 10px;
+        background-color: #EEEEEE;
+        border-radius: 10px;
+    }
+    .like-btn,.delete-btn{
+        margin:3px;
+    }
+    
+/*users#index*/
+.user-name a{
+         color:#000;
+         text-decoration:none;
+         font-size:30px;
+         line-height: 87px;
+         
+}
+
+#user-index .user-image{
+    padding:5px;
+}
+
+#user-index{
+    margin-bottom:20px;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+}
+
+
+/*users#show*/
+.card-header,.card-body{
+    text-align: center;
+}
+    
+
+/*toppages#signup*/
+#whatisminimalists h1{
+    font-size:50px;
+}
+
+#whatisminimalists p{
+    font-size:25px;
+}
+
+#whatisminimalists a{
+    font-size:25px;
+    color:#000;
+    text-decoration:none;
+    background-color: #CCCCCC;
+}
+
+/*signup*/
+.signup-btn{
+    font-size:25px;
+    color:#000;
+    text-decoration:none;
+    background-color: #CCCCCC;
+}
+
+/*login*/
+.login-btn{
+    font-size:25px;
+    color:#000;
+    text-decoration:none;
+    background-color: #CCCCCC;
+}
+
+#fornewuser a{
+    color:#000;
+    text-decoration:none;
+}

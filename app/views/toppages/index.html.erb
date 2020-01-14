@@ -3,33 +3,36 @@
       <%= render 'category_navbar', posts: @posts %>
     </div>
   
-  <div class="row">
-    <aside class="col-sm-4">
-      <%= form_with(model: @post, local: true) do |f| %>
-                <div class="form-group">
-                  <%= f.text_area :content, class: 'form-control', rows: 5 %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :image, 'Image' %>
-                  <%= f.file_field :image, class: 'form-control' %>
-                </div>
-                <!-- カテゴリ選択 -->
-                <div class="form-group">
-                  <%= f.label :category_id %>
-                  <%= f.collection_select :category_id, Category.all, :id, :name %>
-                </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </aside>
-    <div class="col-sm-8">
-      <%= render 'posts/posts', posts: @posts %>
+  <div class="post">
+    <div class="row" >
+      <aside class="col-sm-4 post-form">
+        <%= form_with(model: @post, local: true) do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :content, class: 'form-control', rows: 5 %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :image, '画像(一枚のみ)' %>
+                    <%= f.file_field :image, class: 'form-control' %>
+                  </div>
+                  <!-- カテゴリ選択 -->
+                  <div class="form-group">
+                    <%= f.label :category_id, "カテゴリー" %>
+                    <%= f.collection_select :category_id, Category.all, :id, :name %>
+                  </div>
+          <%= f.submit 'Post', class: 'btn btn-block' %>
+        <% end %>
+      </aside>
+      <div class="col-sm-8">
+        <%= render 'posts/posts', posts: @posts %>
+      </div>
     </div>
   </div>
 <% else %>
  <div class="center jumbotron">
-  <div class="text-center">
+  <div class="text-center" id="whatisminimalists">
     <h1>Welcome to the Minimalists</h1>
-    <%= link_to '会員登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    <p>MinimaListsはミニマムなアイテムを投稿する、ミニマリスト 、ミニマリスを目指す人のための情報共有サイトです。</p>
+    <%= link_to '会員登録', signup_path, class: 'btn btn-lg' %>
   </div>
  </div>
 <% end %>

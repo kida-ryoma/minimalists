@@ -1,9 +1,14 @@
 <ul class="list-unstyled">
   <% posts.each do |post| %>
     <li class="media mb-3">
+      <div class="post-user-image">
+        <%= image_tag post.user.image.url,class:"img-circle",:size =>'77x77' if post.user.image? %>
+        <%= image_tag asset_path("default.png"),class:"img-circle",:size =>'77x77' unless post.user.image? %>
+      </div>
       <div class="media-body">
-        <div>
-          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
+        <div class="post-user-name">
+          <%= link_to post.user.name, user_path(post.user) %> 
+          <span class="text-muted">posted at <%= post.created_at %></span>
         </div>
         <div>
           <p><%= post.content %></p>
@@ -14,23 +19,35 @@
           </p>
         </div>
         <div>
-          <% if current_user.alr_favorite?(post) %>
-            <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
-              <%= hidden_field_tag :favorite_id, post.id %>
-              <%= f.submit 'Unlike', class: 'btn btn-danger btn-sm' %>
-            <% end %>
-          <% else %>
-            <%= form_with(model: current_user.favorites.build, local: true,method: :post) do |f| %>
-              <%= hidden_field_tag :favorite_id, post.id %>
-              <%= f.submit 'Like', class: 'btn btn-primary btn-sm' %>
-            <% end %>
-          <% end %>
-          <% if current_user == post.user %>
-            <%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-          <div><%= post.category.name %></div>
+         <div style="display:inline-flex">
+        　  <span class="post-category"><%= post.category.name %></span>
+        　  
+           <span class="like-btn">
+              <% if current_user.alr_favorite?(post) %>
+                <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
+                  <%= button_tag :type => "submit", :class =>"btn" do %>
+                    <%= hidden_field_tag :favorite_id, post.id %>
+                    <i class="fa fa-heart"></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= form_with(model: current_user.favorites.build, local: true,method: :post) do |f| %>
+                  <%= button_tag :favorite_id,:type => "submit", :class =>"btn" do %>
+                    <%= hidden_field_tag :favorite_id, post.id %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </span>
+            
+            <span class="delete-btn">
+              <% if current_user == post.user %>
+                <%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+              <% end %>
+            </span>
+            
+          </div>
         </div>
-        
       </div>
     </li>
   <% end %>
