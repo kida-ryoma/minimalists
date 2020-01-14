@@ -2,8 +2,8 @@
   <% posts.each do |post| %>
     <li class="media mb-3">
       <div class="post-user-image">
-        <%= image_tag post.user.image.url,class:"img-circle",:size =>'77x77' if post.user.image? %>
-        <%= image_tag asset_path("default.png"),class:"img-circle",:size =>'77x77' unless post.user.image? %>
+        <%= cl_image_tag post.user.image.url,class:"img-circle",:size =>'77x77' if post.user.image? %>
+        <%= cl_image_tag asset_path("default.png"),class:"img-circle",:size =>'77x77' unless post.user.image? %>
       </div>
       <div class="media-body">
         <div class="post-user-name">
@@ -15,7 +15,7 @@
         </div>
         <div>
           <p>
-              <%= image_tag post.image.url if post.image? %>
+              <%= cl_image_tag post.image.url if post.image? %>
           </p>
         </div>
         <div>

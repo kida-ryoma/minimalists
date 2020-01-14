@@ -6,8 +6,8 @@
         <li>
             <div class="row" id ="user-index">
               <div class="col-md-3 user-image">
-                      <%= image_tag user.image.url,class:"img-circle",:size =>'77x77' if user.image? %>
-                      <%= image_tag asset_path("default.png"),class:"img-circle",:size =>'77x77' unless user.image? %>
+                      <%= cl_image_tag user.image.url,class:"img-circle",:size =>'77x77' if user.image? %>
+                      <%= cl_image_tag asset_path("default.png"),class:"img-circle",:size =>'77x77' unless user.image? %>
                 </div>
                 <div class="col-md-9">
                   <div class="user-name">
