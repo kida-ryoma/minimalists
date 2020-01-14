@@ -47,8 +47,9 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
+  production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: minimalists_production
-  username: minimalists
-  password: <%= ENV['MINIMALISTS_DATABASE_PASSWORD'] %>
+  username: <%= ENV['MINIMALISTS_DATABASE_PASSWORD'] %>
